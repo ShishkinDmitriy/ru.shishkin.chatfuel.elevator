@@ -29,7 +29,6 @@ import ru.shishkin.chatfuel.elevator.sm.guards.CabinFloorEqualsGuard;
 import ru.shishkin.chatfuel.elevator.sm.guards.CabinFloorHigherGuard;
 import ru.shishkin.chatfuel.elevator.sm.guards.CabinFloorLowerGuard;
 import ru.shishkin.chatfuel.elevator.sm.guards.ElevatorQueueIsEmptyGuard;
-import ru.shishkin.chatfuel.elevator.sm.guards.HouseFloorBoundsGuard;
 
 @Slf4j
 @Configuration
