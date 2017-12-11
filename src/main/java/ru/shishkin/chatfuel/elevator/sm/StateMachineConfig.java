@@ -207,11 +207,6 @@ public class StateMachineConfig
     // Guards
     // ====================================================================//
 
-//    @Bean
-//    public Guard<ElevatorStates, ElevatorEvents> houseFloorBoundsGuard(int count) {
-//        return new HouseFloorBoundsGuard(count);
-//    }
-
     @Bean
     public Guard<ElevatorStates, ElevatorEvents> cabinFloorHigherGuard() {
         return new CabinFloorHigherGuard();
