@@ -1,19 +1,47 @@
 buildscript {
-    repositories { maven { url "http://repo.spring.io/libs-release"
-        } }
-    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE") }
+    ext {
+        springBootVersion = '2.0.0.M7'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
-version =  '0.1.0'
-archivesBaseName = 'gs-statemachine'
+apply plugin: 'org.springframework.boot'
+version =  '1.0.0'
+archivesBaseName = 'elevator'
+sourceCompatibility = 1.8
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+    maven { url "http://repo.spring.io/libs-milestone" }
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+ext {
+    lombokVersion             = '1.16.18'
+    springBootVersion         = '2.0.0.M7'
+    springStatemachineVersion = '2.0.0.M2'
+    springShellVersion        = '2.0.0.M2'
+    junitVersion              = '4.12'
+}
 
 dependencies {
-    compile("org.springframework.statemachine:spring-statemachine-core:1.2.7.RELEASE")
-    compile("org.springframework.boot:spring-boot-starter:1.5.9.RELEASE")
-    testCompile("org.springframework.statemachine:spring-statemachine-test:1.2.7.RELEASE")
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+    compileOnly group: 'org.projectlombok',                name: 'lombok',                         version: lombokVersion
+
+    compile     group: 'org.springframework.boot',         name: 'spring-boot-starter',            version: springBootVersion
+    compile     group: 'org.springframework.shell',        name: 'spring-shell-starter',           version: springShellVersion
+    compile     group: 'org.springframework.shell',        name: 'spring-shell-standard-commands', version: springShellVersion
+    compile     group: 'org.springframework.statemachine', name: 'spring-statemachine-core',       version: springStatemachineVersion
+
+    testCompile group: 'junit',                            name: 'junit',                          version: junitVersion
+    testCompile group: 'org.springframework.statemachine', name: 'spring-statemachine-test',       version: springStatemachineVersion
 }
 
